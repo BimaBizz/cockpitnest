@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+}
+
+.heading {
+  @apply font-semibold;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-4xl;
+}
+h3 {
+  @apply text-3xl;
+}
+h4 {
+  @apply text-2xl;
+}
+h5 {
+  @apply text-xl;
+}
+h6 {
+  @apply text-lg;
+}
+
+
+#post {
+  @apply space-y-4;
+}
+
+#post h1 {
+  @apply text-3xl 2xl:text-4xl text-white font-bold;
+}
+#post h2 {
+  @apply text-2xl 2xl:text-3xl text-white font-bold;
+}
+#post h3 {
+  @apply text-xl 2xl:text-2xl text-white font-bold;
+}
+#post h4 {
+  @apply text-lg 2xl:text-xl text-white font-bold;
+}
+#post h5 {
+  @apply text-base 2xl:text-lg text-white font-bold;
+}
+#post h6 {
+  @apply text-sm 2xl:text-base text-white font-bold;
+}
+
+#post a {
+  @apply text-indigo-500 underline underline-offset-2;
+}
+
+#post ul {
+  @apply max-w-md space-y-1 list-disc list-inside text-gray-300;
+}
+
+#post ol {
+  @apply ps-5 mt-2 space-y-1 list-decimal list-inside text-gray-300;
+}
+
+#post hr {
+  @apply border-slate-400;
+}
+
+#post table {
+  @apply w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-lg overflow-hidden;
+}
+
+#post tr {
+  @apply border-b bg-gray-800 border-gray-700 hover:bg-gray-600;
+}
+
+#post td {
+  @apply px-6 py-3;
+}
