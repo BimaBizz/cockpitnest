@@ -1,186 +1,37 @@
+# Introduction
 
-# Project Documentation
+## Overview
 
-## Introduction
+**CockpitNest** is a powerful and flexible Webuilder template designed for developers who want to create dynamic, content-rich websites with ease. By combining the robustness of **Cockpit CMS** with the modern capabilities of **Next.js**, CockpitNest provides a seamless environment for building, managing, and scaling web applications.
 
-Welcome to the **Project Documentation** repository. This project utilizes **Cockpit CMS** for content management and **Tailwind CSS** for styling. It includes custom components that are dynamically managed through Cockpit CMS and styled using Tailwind CSS with dynamic class handling. This documentation will guide you through the setup, usage, and customization processes of the project.
+Whether you are developing a personal blog, a corporate website, or a complex web application, CockpitNest offers the tools and flexibility you need to bring your ideas to life. With a focus on simplicity, efficiency, and extensibility, this template is tailored to both novice and experienced developers alike.
 
-----------
+## Why CockpitNest?
 
-## Table of Contents
+### 1. **Seamless Integration**
 
--   [Installation](#installation)
--   [Usage](#usage)
--   [Custom Components in Cockpit CMS](#custom-components-in-cockpit-cms)
--   [Using Tailwind CSS with Cockpit CMS](#using-tailwind-css-with-cockpit-cms)
--   [API Hooks](#api-hooks)
--   [Sitemap Generation](#sitemap-generation)
--   [License](#license)
+CockpitNest leverages the power of Cockpit CMS for content management and Next.js for frontend rendering, offering a seamless integration that makes development faster and more efficient. The template is designed to work out-of-the-box, reducing setup time and allowing you to focus on what matters most—building your site.
 
-----------
+### 2. **Flexible and Scalable**
 
-## Installation
+Whether you're starting small or planning for large-scale growth, CockpitNest is built to scale with your needs. Its modular architecture allows you to easily extend functionality or adapt the template to different types of projects.
 
-1.  **Clone the repository**:
-    
-    bash
-    
-    Salin kode
-    ```bash
-    git clone https://github.com/your-repo-url.git
-    cd your-project-directory
-    ```
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
-3.  **Set up environment variables**: Make sure to set up the following environment variables in a `.env` file:
-    
+### 3. **Modern and Future-Proof**
 
-    ```
-    HOST=https://example.com
-    DOMAIN=https://yourdomain.com
-    ```
-4.  **Build Tailwind CSS**: Run the build command to generate your Tailwind CSS styles:
-    
-    bash
-    
-    Salin kode
-    ```bash
-    npm run build 
-    ```
+Utilizing Next.js ensures that your site is built with the latest web technologies, including server-side rendering (SSR), static site generation (SSG), and client-side rendering (CSR). This results in improved performance, SEO, and user experience.
 
-----------
+### 4. **Content-First Development**
 
-## Usage
+CockpitNest prioritizes content creation and management, making it easier to design a content-rich website. With Cockpit CMS as the backend, you have full control over your content structure, data models, and API endpoints.
 
-### Running the Project
+### 5. **Developer-Friendly**
 
-To start the development server, run:
+With a clean codebase, detailed documentation, and a focus on best practices, CockpitNest is a developer-friendly template. Whether you are customizing components, creating new pages, or integrating third-party services, the template is designed to make your development process smooth and intuitive.
 
-bash
+### 6. **Eazy Customization Styles**
 
-Salin kode
-```bash
-npm run dev 
-```
-Open your browser and navigate to `http://localhost:3000` (or your specified port).
+CockpitNest offers a variety of customizations, including color schemes, layout options, and more. You can choose from a wide range of pre-built styles or create your own powered by Next.js and Tailwind CSS.
 
-----------
+## Getting Started
 
-## Custom Components in Cockpit CMS
-
-### Adding Custom Components
-
-1.  **Navigate to Cockpit CMS**:  
-    Open Cockpit CMS and go to the **Components** section (`https://example.com/layout-components`).
-    
-2.  **Add a New Component**:  
-    Click on **Add Component**, fill in the relevant fields (such as `title`, `class`, etc.), and save the component.
-    
-3.  **Template Setup**:  
-    If your component uses dynamic fields such as a `class`, include them in your template using Vue.js:
-    ```html
-    `<div v-if="data.class" :class="data.class">{{ data.class }}</div>` 
-    ```
-4.  **Save and Use**:  
-    Save the component and use it within your Cockpit CMS pages.
-    
-
-----------
-
-## Using Tailwind CSS with Cockpit CMS
-
-### Tailwind CSS Safelist
-
-To ensure dynamic Tailwind CSS classes are retained during the build process, configure the `safelist` in `tailwind.config.js`.
-
-#### Example Configuration:
-
-```js
-module.exports = {
-  content: [
-    './src/**/*.html',
-    './src/**/*.js',
-  ],
-  safelist: [
-    'bg-red-500',
-    'text-center',
-    'hover:bg-blue-500',
-    'md:flex',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-After configuring the safelist, rebuild the Tailwind CSS:
-
-
-```bash
-npm run build
-``` 
-
-For more details on safelisting, refer to the [Tailwind CSS Safelist Documentation](https://tailwindcss.com/docs/content-configuration#safelisting-classes).
-
-----------
-
-## API Hooks
-
-The project uses custom API hooks to fetch data dynamically. Here are some of the hooks:
-
--   **`fetchRoutes`**: Fetches route data from the API.
--   **`fetchLayout`**: Retrieves page layout based on the route.
--   **`fetchMenus`**: Fetches menu data.
--   **`fetchSettings`**: Retrieves application settings.
--   **`fetchSitemap`**: Fetches sitemap data for SEO purposes.
-
-### Example Usage of `fetchRoutes` Hook
-
-```js
-export const fetchRoutes = async () => {
-    const response = await fetch(`${process.env.HOST}/api/pages/routes`, {
-        cache: 'no-cache'
-    });
-    const data = await response.json();
-    return data.default;
-};
-```
-
-These hooks allow for flexible content management and are essential for rendering the correct data in your components.
-
-----------
-
-## Sitemap Generation
-
-The sitemap generation is handled through a custom function that dynamically builds the sitemap based on the fetched routes and their last modified dates.
-
-### Example Code:
-
-```js
-import { fetchSitemap } from "@/lib/hook";
-
-export async function getData() {
-    const data = await fetchSitemap();
-    return data;
-}
-
-export default async function sitemap() {
-    const data = await getData();
-    const listmain = data.map(item => ({
-        url: process.env.DOMAIN + item.routes.default,
-        lastModified: item.lastmod,
-    }));
-
-    return [...listmain];
-}
-```
-This sitemap is essential for **SEO** purposes and ensures your website pages are correctly indexed by search engines.
-
-----------
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Ready to dive in? The next sections will guide you through setting up CockpitNest, customizing it for your project, and deploying your site. Let's build something amazing together!
