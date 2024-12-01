@@ -9,7 +9,12 @@ const MarkdownComponent = ({ markdown, remove }) => {
     tasklists: true,
   });
 
-  return remove ? null : <div className="markdown" dangerouslySetInnerHTML={{ __html: converter.makeHtml(markdown) }} />;
+  return remove ? null : (
+    <div
+      className="prose md:prose-lg lg:prose-xls"
+      dangerouslySetInnerHTML={{ __html: converter.makeHtml(markdown) }}
+    />
+  );
 };
 
 export default MarkdownComponent;

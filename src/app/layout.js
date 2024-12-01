@@ -1,89 +1,66 @@
-import { Poppins } from "next/font/google";
 import "./globals.css";
-import { fetcSettings } from "@/lib/hook";
+import { Poppins } from 'next/font/google';
+import { fetchSettings } from '@/lib/hook';
+import { cookies } from 'next/headers'; // Import cookies
 
-const inter = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
 });
 
+const defaultSeoSettings = {
+  title: 'Default Title',
+  description: 'Default Description',
+  keywords: 'default, keywords',
+  noindex: false,
+  nofollow: false,
+  image: {
+    path: '/default-image.jpg',
+    width: 1200,
+    height: 630,
+    altText: 'Default Image Alt Text',
+  },
+};
+
 export async function generateMetadata() {
-  const setting = (await fetcSettings()) || {};
-
-  // Set default values for SEO
-  const seo = setting.seo || {
-    title: "Default Title",
-    description: "Default Description",
-    keywords: "default, keywords",
-    noindex: false,
-    nofollow: false,
-    image: {
-      title: "Default Image Title",
-      description: "Default Image Description",
-      path: "/default-image.png",
-    },
-  };
-
-  const images = setting.images || {
-    favicon: {
-      path: "/default-favicon.png",
-    },
-  };
-
-  const otherMetadata = {};
-  if (setting.meta && typeof setting.meta === 'object') {
-    for (const key in setting.meta) {
-      if (setting.meta[key]) {
-        otherMetadata[key] = setting.meta[key];
-      }
-    }
-  }
+  const settings = await fetchSettings();
+  const seoSettings = settings.seo || defaultSeoSettings;
 
   return {
-    title: {
-      template: `%s | ${seo.title}`,
-      default: seo.title,
-    },
-    description: seo.description,
-    keywords: seo.keywords,
-    robots: {
-      index: !seo.noindex,
-      follow: !seo.nofollow,
-      googleBot: {
-        index: !seo.noindex,
-        follow: !seo.nofollow,
-      },
-    },
+    title: seoSettings.title,
+    description: seoSettings.description,
+    keywords: seoSettings.keywords,
+    robots: `${seoSettings.noindex ? 'noindex' : 'index'},${seoSettings.nofollow ? 'nofollow' : 'follow'}`,
     icons: {
-      icon: `${process.env.HOST}/storage/uploads${!images.favicon ? "/default-favicon.png" : images.favicon.path}`,
+      icon: process.env.NEXT_PUBLIC_ASSETS_URL + (settings.images?.favicon?.path || '/default-favicon.ico'),
     },
     openGraph: {
-      title: !seo.image ? seo.title : seo.image.title,
-      description: !seo.image ? seo.description : seo.image.description,
-      url: process.env.DOMAIN,
-      siteName: !seo.image ? seo.title : seo.title,
+      title: seoSettings.title,
+      description: seoSettings.description,
       images: [
         {
-          url: `${process.env.HOST}/storage/uploads${!seo.image ? "/default-image.png" : seo.image.path}`, // Must be an absolute URL
-          width: 800,
-          height: 600,
-        },
-        {
-          url: `${process.env.HOST}/storage/uploads${!seo.image ? "/default-image.png" : seo.image.path}`, // Must be an absolute URL
-          width: 1800,
-          height: 1600,
-          alt: !seo.image ? seo.title : seo.image.title,
+          url: seoSettings.image.path,
+          width: seoSettings.image.width,
+          height: seoSettings.image.height,
+          alt: seoSettings.image.altText,
         },
       ],
+      url: settings.preview?.[0]?.uri || 'https://default-url.com',
     },
-    other: Object.keys(otherMetadata).length > 0 ? otherMetadata : undefined,
+    twitter: {
+      card: 'summary_large_image',
+    },
   };
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme')?.value || 'default';
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" data-theme={theme}>
+      <body className={`${poppins.className}`}>
         {children}
       </body>
     </html>

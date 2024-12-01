@@ -1,4 +1,3 @@
-// components/availableComponents/RowComponent.js
 import ComponentRenderer from '../ComponentRenderer';
 
 const RowComponent = ({ data, columns, remove }) => (

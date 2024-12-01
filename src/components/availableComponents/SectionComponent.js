@@ -3,7 +3,7 @@ import ComponentRenderer from '../ComponentRenderer';
 
 const SectionComponent = ({ data, children, remove }) => (
   remove ? null : (
-    <section className={`p-4 ${data.class}`}>
+    <section className="p-4 max-w-7xl mx-auto">
       {children.map((child) => (
         <ComponentRenderer key={child.id} component={child} />
       ))}

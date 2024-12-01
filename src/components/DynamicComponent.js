@@ -1,7 +1,7 @@
-import React from 'react';
-import ComponentRenderer from './ComponentRenderer';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import ComponentRenderer from "./ComponentRenderer";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 
 const DynamicComponent = ({ layout, collection, singleton }) => {
   if (!layout && !collection && !singleton) {
@@ -39,13 +39,19 @@ const DynamicComponent = ({ layout, collection, singleton }) => {
                 <Link href={item.route}>
                   <h2>{item.item.title}</h2>
                 </Link>
-                <div id='post' dangerouslySetInnerHTML={{ __html: item.item.post }} />
+                <div
+                  id="post"
+                  dangerouslySetInnerHTML={{ __html: item.item.post }}
+                />
               </div>
             ))
           ) : (
             <div className="container mx-auto p-4">
               <h2>{collection.data.item.title}</h2>
-              <div id='post' dangerouslySetInnerHTML={{ __html: collection.data.item.post }} />
+              <div
+                id="post"
+                dangerouslySetInnerHTML={{ __html: collection.data.item.post }}
+              />
             </div>
           )}
         </div>
@@ -68,15 +74,24 @@ const DynamicComponent = ({ layout, collection, singleton }) => {
         ))}
         <div className="container mx-auto p-4 flex gap-4">
           {singleton.data.data.image && (
-            <img
-              src={process.env.HOST + "/storage/uploads" + singleton.data.data.image.path}
+            <Image
+              src={
+                process.env.NEXT_HOST +
+                "/storage/uploads" +
+                singleton.data.data.image.path
+              }
               alt={singleton.data.data.image.altText}
               width={singleton.data.data.image.width}
               height={singleton.data.data.image.height}
-              className='rounded-lg'
+              className="rounded-lg"
             />
           )}
-          {<div id='post' dangerouslySetInnerHTML={{ __html: singleton.data.data.post }}></div>}
+          {
+            <div
+              id="post"
+              dangerouslySetInnerHTML={{ __html: singleton.data.data.post }}
+            ></div>
+          }
         </div>
         {singleton.data.layout.after.map((section) => (
           <ComponentRenderer key={section.id} component={section} />

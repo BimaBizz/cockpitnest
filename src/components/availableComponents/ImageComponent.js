@@ -1,8 +1,23 @@
-// components/availableComponents/ImageComponent.js
 import Image from 'next/image';
 
-const ImageComponent = ({ data, remove }) => (
-  remove ? null : <Image width={data.asset.width} height={data.asset.height} src={`${process.env.HOST}/storage/uploads/${data.asset.path}`} alt={data.asset.altText} className={`rounded-lg ${data.class}`} />
-);
+const ImageComponent = ({ data, remove }) => {
+  if (remove || !data || !data.asset) return null;
+
+  const { path, width, height, altText } = data.asset;
+  const src = process.env.NEXT_ASSETS_URL ? process.env.NEXT_ASSETS_URL + path : path;
+
+  return (
+    <div className="rounded-lg overflow-hidden image-full w-full shadow-xl">
+      <figure>
+        <Image
+          src={src}
+          width={width}
+          height={height}
+          alt={altText || 'Image'}
+        />
+      </figure>
+    </div>
+  );
+};
 
 export default ImageComponent;

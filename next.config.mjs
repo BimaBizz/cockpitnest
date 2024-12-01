@@ -3,10 +3,10 @@ const nextConfig = {
     images: {
         remotePatterns: [
           {
-            protocol: 'https',
-            hostname: 'admin.bizzcode.site',
+            protocol: 'http',
+            hostname: 'localhost',
             port: '',
-            pathname: '/**',
+            pathname: '/cockpit-pro/storage/**',
           },
         ],
       },

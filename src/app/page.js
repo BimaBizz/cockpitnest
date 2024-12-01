@@ -1,9 +1,7 @@
-// app/[slug]/page.js
-import React from 'react';
+import DynamicComponent from '@/components/DynamicComponent';
 import { fetchLayout } from '@/lib/hook';
-import DynamicComponent from '@/components/DynamicComponents';
 
-export default async function SlugPage() {
-  const layout = await fetchLayout('/');
+export default async function Home() {
+  const layout = await fetchLayout('/home');
   return <DynamicComponent layout={layout} />;
 }

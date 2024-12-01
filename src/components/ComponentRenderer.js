@@ -1,5 +1,3 @@
-// components/ComponentRenderer.js
-import React from 'react';
 import DividerComponent from './availableComponents/DividerComponent';
 import LinkComponent from './availableComponents/LinkComponent';
 import GridComponent from './availableComponents/GridComponent';
@@ -13,6 +11,15 @@ import HeadingComponent from './availableComponents/HeadingComponent';
 import MarkdownComponent from './availableComponents/MarkdownComponent';
 import RichtextComponent from './availableComponents/RichtextComponent';
 import ButtonComponent from './availableComponents/ButtonComponent';
+import HeroComponent from './availableComponents/HeroComponent';
+import Navbar from './availableComponents/NavbarComponent';
+import FooterComponent from './availableComponents/FooterComponent';
+import CardComponent from './availableComponents/CardComponent';
+import FormComponent from './availableComponents/FormComponent';
+import SelectComponent from './availableComponents/SelectComponent';
+import InputFileComponent from './availableComponents/InputFileComponent';
+import CheckboxComponent from './availableComponents/CheckboxComponent';
+import TextInputComponent from './availableComponents/TextInputComponent';
 
 const ComponentRenderer = ({ component }) => {
   switch (component.component) {
@@ -21,11 +28,11 @@ const ComponentRenderer = ({ component }) => {
     case 'link':
       return <LinkComponent data={component.data} remove={component.hidden} />;
     case 'grid':
-      return <GridComponent data={component.data} columns={component.columns} />;
+      return <GridComponent columns={component.columns} data={component.data} remove={component.hidden} />;
     case 'row':
       return <RowComponent data={component.data} columns={component.columns} remove={component.hidden} />;
     case 'section':
-      return <SectionComponent data={component.data} children={component.children} remove={component.hidden} />;
+      return <SectionComponent data={component.data} remove={component.hidden} >{component.children}</SectionComponent>;
     case 'spacer':
       return <SpacerComponent size={component.data.size} remove={component.hidden} />;
     case 'image':
@@ -42,6 +49,24 @@ const ComponentRenderer = ({ component }) => {
       return <RichtextComponent html={component.data.html} remove={component.hidden} />;
     case 'button':
       return <ButtonComponent data={component} />;
+    case 'hero' :
+      return <HeroComponent data={component.data} remove={component.hidden} />
+    case 'navbar':
+      return <Navbar theme={component.data.enableTheme} remove={component.hidden}/>
+    case 'footer':
+      return <FooterComponent data={component.data} remove={component.hidden} />
+    case 'card':
+      return <CardComponent data={component.data} remove={component.hidden} />;
+    case 'form':
+      return <FormComponent data={component.data} children={component.children} remove={component.hidden} />;
+    case 'select':
+      return <SelectComponent data={component.data} remove={component.hidden} />;
+    case 'fileInput':
+      return <InputFileComponent data={component.data} remove={component.hidden} />;
+    case 'checkbox':
+      return <CheckboxComponent data={component.data} remove={component.hidden} />;
+    case 'input':
+      return <TextInputComponent data={component.data} remove={component.hidden} />;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }

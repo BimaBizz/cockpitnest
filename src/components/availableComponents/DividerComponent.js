@@ -1,5 +1,10 @@
 // components/availableComponents/DividerComponent.js
 const DividerComponent = ({ remove }) => (
-    remove ? null : <hr className="border border-gray-300 my-4" />
-  );
+  remove ? null : (
+    <div className="flex w-full flex-col">
+      <div className="divider" />
+    </div>
+  )
+);
+
 export default DividerComponent;
