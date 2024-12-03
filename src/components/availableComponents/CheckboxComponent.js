@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+'use client'
+
+import React, { useContext, useState, useEffect } from 'react';
 import { FormContext } from '../../context/FormContext';
 
 const CheckboxComponent = ({ data, remove }) => {
-  const { updateFormData } = useContext(FormContext);
+  const { formData, updateFormData } = useContext(FormContext);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    setChecked(formData[data.name] || false);
+  }, [formData, data.name]);
 
   if (remove) return null;
 
   const handleChange = (e) => {
-    updateFormData({ [data.name]: e.target.checked });
+    const newChecked = e.target.checked;
+    setChecked(newChecked);
+    updateFormData({ [data.name]: newChecked });
   };
 
   return (
@@ -17,7 +26,9 @@ const CheckboxComponent = ({ data, remove }) => {
         <input 
           type="checkbox" 
           className="checkbox checkbox-primary" 
+          checked={checked}
           onChange={handleChange}
+          required
         />
       </label>
     </div>

@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+'use client'
+
+import React, { useContext, useState, useEffect } from 'react';
 import { FormContext } from '../../context/FormContext';
 
 const TextInputComponent = ({ data, remove }) => {
-  const { updateFormData } = useContext(FormContext);
+  const { formData, updateFormData } = useContext(FormContext);
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(formData[data.name] || '');
+  }, [formData, data.name]);
 
   if (remove) return null;
 
   const handleChange = (e) => {
-    updateFormData({ [data.name]: e.target.value });
+    const newValue = e.target.value;
+    setValue(newValue);
+    updateFormData({ [data.name]: newValue });
   };
 
   return (
@@ -20,7 +29,9 @@ const TextInputComponent = ({ data, remove }) => {
         name={data.name || "input"} 
         placeholder={data.placeholder || "Enter text here"} 
         className="input input-bordered w-full" 
+        value={value}
         onChange={handleChange}
+        required
       />
     </div>
   );

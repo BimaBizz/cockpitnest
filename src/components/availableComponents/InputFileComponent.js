@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+'use client'
+
+import React, { useContext, useState, useEffect } from 'react';
 import { FormContext } from '../../context/FormContext';
 
 const InputFileComponent = ({ data, remove }) => {
-  const { updateFormData } = useContext(FormContext);
+  const { formData, updateFormData } = useContext(FormContext);
+  const [files, setFiles] = useState(null);
+
+  useEffect(() => {
+    setFiles(formData[data.name] || null);
+  }, [formData, data.name]);
 
   if (remove) return null;
 
   const handleChange = (e) => {
-    updateFormData({ [data.name]: e.target.files });
+    const newFiles = e.target.files;
+    setFiles(newFiles);
+    updateFormData({ [data.name]: newFiles });
   };
 
   return (
@@ -20,6 +29,7 @@ const InputFileComponent = ({ data, remove }) => {
         name={data.name || "file"} 
         className="file-input file-input-bordered" 
         onChange={handleChange}
+        required
       />
     </div>
   );

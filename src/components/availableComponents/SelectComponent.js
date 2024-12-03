@@ -1,20 +1,23 @@
 'use client'
-import React, { useContext } from 'react';
+
+import React, { useContext, useState, useEffect } from 'react';
 import { FormContext } from '@/context/FormContext';
 
 const SelectComponent = ({ data, remove }) => {
-  const formContext = useContext(FormContext);
-
-  if (!formContext) {
-    throw new Error('SelectComponent harus digunakan dalam FormProvider');
-  }
-
-  const { updateFormData } = formContext;
+  const { formData, updateFormData } = useContext(FormContext);
 
   if (remove) return null;
 
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(formData[data.name] || '');
+  }, [formData, data.name]);
+
   const handleChange = (e) => {
-    updateFormData({ [data.name]: e.target.value });
+    const newValue = e.target.value;
+    setValue(newValue);
+    updateFormData({ [data.name]: newValue });
   };
 
   return (
@@ -24,8 +27,11 @@ const SelectComponent = ({ data, remove }) => {
       </label>
       <select 
         className="select select-bordered" 
+        value={value}
         onChange={handleChange}
+        required
       >
+        <option value="" disabled>Select an option</option>
         {data.selectList.listname.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}
