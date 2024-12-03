@@ -53,7 +53,7 @@ const RichtextComponent = ({ html, remove }) => {
   }, [html]);
 
   return remove ? null : (
-    <div id="richtext-content" dangerouslySetInnerHTML={{ __html: fixImageUrls(html) }} className="prose md:prose-lg lg:prose-xl max-w-full" />
+    <div id="richtext-content" dangerouslySetInnerHTML={{ __html: fixImageUrls(html) }} className="prose md:prose-md lg:prose-lg max-w-full" />
   );
 };
 
