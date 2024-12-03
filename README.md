@@ -1,3 +1,5 @@
+# CockpitNest
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -19,6 +21,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Features
+
+CockpitNest offers the following features:
+- **Fast Development**: Utilize Next.js for rapid development with hot-reloading.
+- **Optimized Fonts**: Automatically optimize and load fonts using [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
+- **Customizable Pages**: Easily modify pages with auto-updating.
+- **Deployment Ready**: Seamless deployment on Vercel.
 
 ## Learn More
 
