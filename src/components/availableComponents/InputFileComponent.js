@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useContext, useState, useEffect } from 'react';
-import { FormContext } from '../../context/FormContext';
+import { FormContext } from '@/context/FormContext';
 
 const InputFileComponent = ({ data, remove }) => {
   const { formData, updateFormData } = useContext(FormContext);

@@ -1,4 +1,4 @@
-import ComponentRenderer from '../ComponentRenderer';
+import ComponentRenderer from '@/components/ComponentRenderer';
 
 const RowComponent = ({ data, columns, remove }) => (
   remove ? null : (

@@ -1,5 +1,5 @@
 // components/availableComponents/SectionComponent.js
-import ComponentRenderer from '../ComponentRenderer';
+import ComponentRenderer from '@/components/ComponentRenderer';
 
 const SectionComponent = ({ data, children, remove }) => (
   remove ? null : (

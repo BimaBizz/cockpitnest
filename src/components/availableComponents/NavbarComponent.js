@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { fetchMenus, fetchSettings } from '@/lib/hook'; // Ganti dengan path ke file lib Anda
-import ThemeButton from '../SupportComponents/ThemeButton';
+import ThemeButton from '@/components/SupportComponents/ThemeButton';
 
 const Navbar = async ({ theme, remove }) => {
   if (remove) {
@@ -70,7 +70,7 @@ const Navbar = async ({ theme, remove }) => {
                 />
                 </svg>
               </label>
-              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
+              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 p-2 shadow">
                 {renderLinks(navData, true)}
               </ul>
               </div>

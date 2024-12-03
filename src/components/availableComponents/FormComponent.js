@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useContext } from 'react';
-import { FormContext, FormProvider } from '../../context/FormContext';
-import ComponentRenderer from '../ComponentRenderer';
+import { FormContext, FormProvider } from '@/context/FormContext';
+import ComponentRenderer from '@/components/ComponentRenderer';
 
 const FormComponent = ({ data, children, remove }) => {
   if (remove) return null;
