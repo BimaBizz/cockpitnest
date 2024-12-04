@@ -20,23 +20,21 @@ return (
             {collection.data.items ? 
                 <div className="max-w-7xl mx-auto p-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {collection.data.items.map((item) => (
-                    <div key={item.item._id} className="card w-full bg-base-100 shadow-xl">
+                    <Link href={item.route} key={item.item._id} className="card w-full bg-base-100 shadow-xl group">
                         <figure className="h-72 overflow-hidden object-cover object-center">
                             <Image
-                                className="h-72 overflow-hidden object-cover object-center"
+                                className="h-72 overflow-hidden object-cover object-center group-hover:scale-105 transition-transform"
                                 src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${item.item.img[0].path}`}
                                 alt={item.item.img[0].altText}
                                 width={item.item.img[0].width}
                                 height={item.item.img[0].height}
                             />
                         </figure>
-                        <div className="card-body">
-                            <Link href={item.route}>
+                        <div className="card-body">           
                                 <h2 className="card-title">{item.item.title}</h2>
-                            </Link>
                             <p>Rp. {formatPrice(item.item.price)}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
              : (
