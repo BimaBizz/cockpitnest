@@ -37,3 +37,11 @@ export const fetchRoutes = async () => {
     const data = await response.json();
     return data;
   };
+
+  export const fetchSearch = async (index, query) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/detektivo/search/${index}?q=${query}`,{
+        cache : 'no-cache'
+    }); // ganti dengan URL API kamu
+    const data = await response.json();
+    return data;
+  };
