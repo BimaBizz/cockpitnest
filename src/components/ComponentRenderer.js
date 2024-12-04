@@ -52,7 +52,7 @@ const ComponentRenderer = ({ component }) => {
     case 'hero' :
       return <HeroComponent data={component.data} remove={component.hidden} />
     case 'navbar':
-      return <Navbar theme={component.data.enableTheme} remove={component.hidden}/>
+      return <Navbar theme={component.data.enableTheme} search={component.data.enableSearch} remove={component.hidden}/>
     case 'footer':
       return <FooterComponent data={component.data} remove={component.hidden} />
     case 'card':

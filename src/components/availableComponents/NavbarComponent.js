@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { fetchMenus, fetchSettings } from '@/lib/hook'; // Ganti dengan path ke file lib Anda
+import { fetchMenus, fetchSettings } from '@/lib/hook';
 import ThemeButton from '@/components/SupportComponents/ThemeButton';
+import SearchButton from '@/components/SupportComponents/SearchButton';
 
-const Navbar = async ({ theme, remove }) => {
+const Navbar = async ({ theme, remove, search }) => {
   if (remove) {
     return null;
   }
@@ -49,8 +50,8 @@ const Navbar = async ({ theme, remove }) => {
     };
 
     return (
-      <div className='w-full fixed z-10 shadow-md'>
-        <div className="navbar bg-base-100 mx-auto max-w-7xl">
+      <div className='w-full fixed z-10 shadow-md bg-base-100'>
+        <div className="navbar mx-auto max-w-7xl">
           <div className="container mx-auto flex items-center justify-between">
             <div className="navbar-start flex items-center w-full">
               <div className="dropdown lg:hidden">
@@ -81,8 +82,13 @@ const Navbar = async ({ theme, remove }) => {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">{renderLinks(navData)}</ul>
             </div>
-            <div className={`flex justify-end w-full ${theme ? '' : 'hidden'}`}>
-              {theme && <ThemeButton />}
+            <div className={`flex justify-end w-full ${!theme && !search ? 'hidden' : ''}`}>
+              <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
+                {search && <SearchButton />}
+              </div>
+              <div className={`h-full ${theme ? '' : 'hidden'}`}>
+                {theme && <ThemeButton />}
+              </div>
             </div>
           </div>
         </div>
