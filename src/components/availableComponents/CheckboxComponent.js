@@ -20,7 +20,7 @@ const CheckboxComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control">
+    <div className="form-control my-2">
       <label className="label cursor-pointer">
         <span className="label-text">{data.name}</span>
         <input 
