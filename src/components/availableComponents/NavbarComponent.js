@@ -22,7 +22,7 @@ const Navbar = async ({ theme, remove, search }) => {
                 <label tabIndex={0} className="flex items-start md:items-center md:btn-ghost my-auto md:h-full font-semibold">
                   {link.title}{' '}
                   <svg
-                    className="fill-current ml-1"
+                    className="fill-current ml-1 -mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
@@ -31,7 +31,7 @@ const Navbar = async ({ theme, remove, search }) => {
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </label>
-                <ul className="md:dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <ul className="lg:dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                   {link.children.map((child, childIndex) => (
                     <li key={childIndex}>
                       <Link href={child.url.route || child.url} className='font-semibold'>{child.title}</Link>
@@ -51,8 +51,8 @@ const Navbar = async ({ theme, remove, search }) => {
 
     return (
       <div className='w-full fixed z-10 shadow-md bg-base-100'>
-        <div className="navbar mx-auto max-w-7xl">
-          <div className="container mx-auto flex items-center justify-between">
+        <div className="navbar mx-auto max-w-full lg:max-w-7xl">
+          <div className="min-w-full mx-auto flex items-center justify-between">
             <div className="navbar-start flex items-center w-full">
               <div className="dropdown lg:hidden">
               <label tabIndex={0} className="btn btn-ghost">
@@ -75,7 +75,7 @@ const Navbar = async ({ theme, remove, search }) => {
                 {renderLinks(navData, true)}
               </ul>
               </div>
-              <Link href="/" className="btn btn-ghost normal-case text-xl">
+              <Link href="/" className="normal-case text-xl font-bold">
               {settings.seo.title}
               </Link>
             </div>
