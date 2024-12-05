@@ -34,7 +34,7 @@ const ComponentRenderer = ({ component }) => {
     case 'row':
       return <RowComponent data={component.data} columns={component.columns} remove={component.hidden} />;
     case 'section':
-      return <SectionComponent data={component.data} remove={component.hidden} >{component.children}</SectionComponent>;
+      return <SectionComponent data={component.data} remove={component.hidden}>{component.children}</SectionComponent>;
     case 'spacer':
       return <SpacerComponent size={component.data.size} remove={component.hidden} />;
     case 'image':
@@ -60,7 +60,7 @@ const ComponentRenderer = ({ component }) => {
     case 'card':
       return <CardComponent data={component.data} remove={component.hidden} />;
     case 'form':
-      return <FormComponent data={component.data} children={component.children} remove={component.hidden} />;
+      return <FormComponent data={component.data} remove={component.hidden}>{component.children}</FormComponent>;
     case 'select':
       return <SelectComponent data={component.data} remove={component.hidden} />;
     case 'fileInput':

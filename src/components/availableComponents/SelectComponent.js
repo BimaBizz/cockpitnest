@@ -6,13 +6,13 @@ import { FormContext } from '@/context/FormContext';
 const SelectComponent = ({ data, remove }) => {
   const { formData, updateFormData } = useContext(FormContext);
 
-  if (remove) return null;
-
   const [value, setValue] = useState('');
 
   useEffect(() => {
     setValue(formData[data.name] || '');
   }, [formData, data.name]);
+
+  if (remove) return null;
 
   const handleChange = (e) => {
     const newValue = e.target.value;
