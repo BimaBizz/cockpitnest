@@ -8,8 +8,9 @@ const ImageComponent = ({ data, remove }) => {
 
   return (
     <div className="rounded-lg overflow-hidden image-full w-full shadow-xl">
-      <figure>
+      <figure className='w-full h-full object-cover object-center'>
         <Image
+        className='w-full h-full object-cover object-center'
           src={src}
           width={width}
           height={height}

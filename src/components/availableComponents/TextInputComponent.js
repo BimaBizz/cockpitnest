@@ -25,7 +25,7 @@ const TextInputComponent = ({ data, remove }) => {
         <span className="label-text">{data.name}</span>
       </label>
       <input 
-        type="text" 
+        type={data.type || "text"} 
         name={data.name || "input"} 
         placeholder={data.placeholder || "Enter text here"} 
         className="input input-bordered w-full" 

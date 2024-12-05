@@ -31,7 +31,7 @@ const Navbar = async ({ theme, remove, search }) => {
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </label>
-                <ul className="lg:dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <ul className="lg:dropdown-content menu p-2 shadow-none lg:shadow bg-base-100 lg:rounded-box w-52">
                   {link.children.map((child, childIndex) => (
                     <li key={childIndex}>
                       <Link href={child.url.route || child.url} className='font-semibold'>{child.title}</Link>

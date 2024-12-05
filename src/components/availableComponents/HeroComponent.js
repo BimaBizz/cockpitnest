@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const HeroComponent = ({ data, remove }) => {
   return remove ? null : (
@@ -11,8 +12,8 @@ const HeroComponent = ({ data, remove }) => {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">{data.title}</h1>
           <p className="mb-5">{data.subtitle}</p>
-          {!data.hideButton && (
-            <button className="btn btn-primary">Get Started</button>
+          {!data.button.hideButton && data.button.link && (
+            <Link href={data.button.link} className="btn btn-primary">{data.button.label}</Link>
           )}
         </div>
       </div>

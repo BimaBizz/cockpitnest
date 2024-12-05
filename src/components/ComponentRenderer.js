@@ -20,6 +20,7 @@ import SelectComponent from '@/components/availableComponents/SelectComponent';
 import InputFileComponent from '@/components/availableComponents/InputFileComponent';
 import CheckboxComponent from '@/components/availableComponents/CheckboxComponent';
 import TextInputComponent from '@/components/availableComponents/TextInputComponent';
+import TextareaComponent from './availableComponents/TextareaComponent';
 
 const ComponentRenderer = ({ component }) => {
   switch (component.component) {
@@ -67,6 +68,8 @@ const ComponentRenderer = ({ component }) => {
       return <CheckboxComponent data={component.data} remove={component.hidden} />;
     case 'input':
       return <TextInputComponent data={component.data} remove={component.hidden} />;
+    case 'textarea':
+      return <TextareaComponent data={component.data} remove={component.hidden} />;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }
