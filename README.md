@@ -57,14 +57,9 @@
 ```bash
 npm run dev
 ```
-- Akses aplikasi di http://localhost:3000.
-Tentu, berikut adalah contoh `README.md` untuk proyek **CockpitNest** yang mengintegrasikan Cockpit CMS, Next.js, dan TailwindCSS:
+- Akses aplikasi di `http://localhost:3000`.
 
-markdown
-
-Salin kode
-
-`# CockpitNest
+# CockpitNest
 
 **CockpitNest** adalah template untuk membangun situs web menggunakan [Cockpit CMS](https://getcockpit.com/), [Next.js](https://nextjs.org/), dan [TailwindCSS](https://tailwindcss.com/). Proyek ini dirancang untuk membantu pengembang membuat aplikasi web yang cepat, responsif, dan mudah dikelola.
 
