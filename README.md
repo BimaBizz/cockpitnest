@@ -1,46 +1,162 @@
+
 # CockpitNest
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**CockpitNest** adalah template untuk membangun situs web menggunakan [Cockpit CMS](https://getcockpit.com/), [Next.js](https://nextjs.org/), dan [TailwindCSS](https://tailwindcss.com/). Proyek ini dirancang untuk membantu pengembang membuat aplikasi web yang cepat, responsif, dan mudah dikelola.
 
-## Getting Started
+## Fitur
 
-First, run the development server:
+- **Integrasi Backend dan Frontend**: Backend menggunakan Cockpit CMS untuk pengelolaan konten.
+- **Frontend Modern**: Dibangun dengan Next.js untuk kinerja tinggi dan fitur server-side rendering (SSR).
+- **Desain Responsif**: Menggunakan TailwindCSS dan DaisyUI untuk gaya yang cepat dan fleksibel.
+- **Hosting Aman**: Dapat diintegrasikan dengan Jagoan Hosting dan Cloudflare.
+
+## Persyaratan Sistem
+
+- Node.js 20.17 atau lebih baru
+- NPM atau Yarn
+- PHP 8.2
+- Cockpit CMS yang dihosting atau lokal
+
+## Instalasi
+
+1. **Clone repository:**
+
+   ```bash
+   git clone https://github.com/username/cockpitnest.git
+   cd cockpitnest
+   npm i
+   ```
+2.   **Konfigurasi Cockpit CMS:**
+
+-   Download **[cockpit cms](https://getcockpit.com/start-journey)**
+- extract dan install cockpit cms di xampp
+- copy database di ```cockpitnest/public/database```
+- replace storage cockpit cms di ```C:xampp/htdocs/*nama-cockpit-folder-kamu*/storage```
+- masuk ke cockpit dashboard ```http://your-xampp/auth/login?to=%2F```
+- login
+
+> user : admin
+> password : admin
+
+3. **Konfigurasi CockpitNest:**
+- rename .env_sample ke .env
+- konfigurasi env sesuai kebutuhan kamu
+	```
+	NEXT_HOST=http://localhost/cockpit-pro
+	NEXT_ASSETS_URL=http://localhost/cockpit-pro/storage/uploads
+	NEXT_MENU_NAME=bizzcode
+
+
+	NEXT_PUBLIC_ASSETS_URL=http://localhost/cockpit-pro/storage/uploads
+	NEXT_PUBLIC_HOST=http://localhost/cockpit-pro
+	NEXT_PUBLIC_UR_DOMAIN=https://yourdomain.com
+	NEXT_PUBLIC_COCKPIT_URL=localhost
+	```
+- Jalankan aplikasi:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+- Akses aplikasi di http://localhost:3000.
+Tentu, berikut adalah contoh `README.md` untuk proyek **CockpitNest** yang mengintegrasikan Cockpit CMS, Next.js, dan TailwindCSS:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+markdown
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Salin kode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`# CockpitNest
 
-## Features
+**CockpitNest** adalah template untuk membangun situs web menggunakan [Cockpit CMS](https://getcockpit.com/), [Next.js](https://nextjs.org/), dan [TailwindCSS](https://tailwindcss.com/). Proyek ini dirancang untuk membantu pengembang membuat aplikasi web yang cepat, responsif, dan mudah dikelola.
 
-CockpitNest offers the following features:
-- **Fast Development**: Utilize Next.js for rapid development with hot-reloading.
-- **Optimized Fonts**: Automatically optimize and load fonts using [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
-- **Customizable Pages**: Easily modify pages with auto-updating.
-- **Deployment Ready**: Seamless deployment on Vercel.
+## Fitur
 
-## Learn More
+- **Integrasi Backend dan Frontend**: Backend menggunakan Cockpit CMS untuk pengelolaan konten.
+- **Frontend Modern**: Dibangun dengan Next.js untuk kinerja tinggi dan fitur server-side rendering (SSR).
+- **Desain Responsif**: Menggunakan TailwindCSS untuk gaya yang cepat dan fleksibel.
+- **Hosting Aman**: Dapat diintegrasikan dengan Jagoan Hosting dan Cloudflare.
 
-To learn more about Next.js, take a look at the following resources:
+## Persyaratan Sistem
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18 atau lebih baru
+- NPM atau Yarn
+- Cockpit CMS yang dihosting atau lokal
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Instalasi
 
-## Deploy on Vercel
+1. **Clone repository:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/username/cockpitnest.git
+   cd cockpitnest` 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  **Install dependencies:**
+    
+    bash
+    
+    Salin kode
+    
+    `npm install` 
+    
+3.  **Konfigurasi Cockpit CMS:**
+    
+    -   Pastikan Cockpit CMS sudah diinstal dan berjalan.
+        
+    -   Buat koleksi sesuai kebutuhan (misalnya: `posts`, `projects`, dll.).
+        
+    -   Perbarui file `.env.local` di root proyek dengan URL Cockpit CMS:
+        
+        env
+        
+        Salin kode
+        
+        `NEXT_PUBLIC_COCKPIT_API=https://your-cockpit-url/api
+        NEXT_PUBLIC_COCKPIT_TOKEN=your-cockpit-api-token` 
+        
+4.  **Jalankan aplikasi:**
+    
+    bash
+    
+    Salin kode
+    
+    `npm run dev` 
+    
+    Akses aplikasi di http://localhost:3000.
+
+## Customisasi
+
+1.  **Menambahkan Komponen Baru**:
+    
+    -   Tambahkan komponen di folder `components/` dan impor ke halaman yang relevan.
+2.  **Mengatur TailwindCSS**:
+    
+    -   Ubah file `tailwind.config.js` untuk menambahkan tema atau konfigurasi khusus.
+
+## Deployment
+
+1.  **Bangun aplikasi:**
+    
+    ```bash
+    npm run build 
+    ```
+2.  **Jalankan di lingkungan produksi:**
+    
+    ```bash
+	npm start 
+    ```
+3.  **Hosting**:
+    
+    -   Gunakan hosting seperti Vercel, Jagoan Hosting, atau server Nginx.
+    -   Tambahkan konfigurasi Cloudflare untuk keamanan tambahan.
+
+## Kontribusi
+
+Kontribusi sangat diterima! Silakan buat issue atau kirim pull request untuk peningkatan.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](https://github.com/BimaBizz/cockpitnest?tab=License-1-ov-file).
+
+----------
+
+Dibuat dengan ❤️ oleh **Bima Mahendra**.
+Jika ada bagian yang perlu disesuaikan lebih lanjut, beri tahu saya! 😊
