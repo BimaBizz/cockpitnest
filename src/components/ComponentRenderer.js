@@ -21,6 +21,7 @@ import InputFileComponent from '@/components/availableComponents/InputFileCompon
 import CheckboxComponent from '@/components/availableComponents/CheckboxComponent';
 import TextInputComponent from '@/components/availableComponents/TextInputComponent';
 import TextareaComponent from './availableComponents/TextareaComponent';
+import CarouselComponent from '@/components/availableComponents/CarouselComponent';
 
 const ComponentRenderer = ({ component }) => {
   switch (component.component) {
@@ -70,6 +71,8 @@ const ComponentRenderer = ({ component }) => {
       return <TextInputComponent data={component.data} remove={component.hidden} />;
     case 'textarea':
       return <TextareaComponent data={component.data} remove={component.hidden} />;
+    case 'carousel':
+      return <CarouselComponent data={component.data} remove={component.hidden} />;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }
