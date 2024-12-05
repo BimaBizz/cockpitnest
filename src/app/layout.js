@@ -27,6 +27,9 @@ export async function generateMetadata() {
   const settings = await fetchSettings();
   const seoSettings = settings.seo || defaultSeoSettings;
 
+  const otherMeta = settings.meta || {};
+  const other = Object.keys(otherMeta).length > 0 ? otherMeta : undefined;
+
   return {
     title: seoSettings.title,
     description: seoSettings.description,
@@ -40,7 +43,7 @@ export async function generateMetadata() {
       description: seoSettings.description,
       images: [
         {
-          url: seoSettings.image.path,
+          url: process.env.NEXT_PUBLIC_ASSETS_URL+seoSettings.image.path,
           width: seoSettings.image.width,
           height: seoSettings.image.height,
           alt: seoSettings.image.altText,
@@ -51,6 +54,7 @@ export async function generateMetadata() {
     twitter: {
       card: 'summary_large_image',
     },
+    other,
   };
 }
 
