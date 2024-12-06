@@ -10,9 +10,9 @@ export async function generateMetadata({ params }) {
     const layout = await fetchLayout(fullSlug);
     
     let seo = {
-      title: "Default Title",
-      description: "Default Description",
-      keywords: "default, keywords",
+      title: "404 Not Found",
+      description: "Page not found",
+      robots: "noindex, nofollow",
     };
 
     if (layout.seo) {
