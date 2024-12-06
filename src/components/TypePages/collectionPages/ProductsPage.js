@@ -97,37 +97,22 @@ const ProductsPage = ({ collection }) => {
                       </a>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <h3 className="font-medium mb-2">Color</h3>
-                    <div className="flex items-center space-x-2">
-                      {["Green", "Pink", "Silver", "Blue"].map((color) => (
-                        <button
-                          key={color}
-                          className="w-8 h-8 rounded-full border-2 border-gray-300 focus:ring-2 focus:ring-offset-2"
-                          style={{
-                            backgroundColor:
-                              color.toLowerCase() === "pink"
-                                ? "#FFC0CB"
-                                : color.toLowerCase(),
-                          }}
-                          aria-label={color}
-                        />
+                  {collection.data.item.varian && collection.data.item.varian.length > 0 && (
+                    <div className="mt-6">
+                      {collection.data.item.varian.map((varian) => (
+                        <div key={varian.nameVarian} className="mb-4">
+                          <h3 className="font-medium mb-2">{varian.nameVarian}</h3>
+                          <div className="flex items-center gap-2 flex-wrap-reverse">
+                            {varian.jenisVarian.map((jenis) => (
+                              <button key={jenis} className="btn btn-outline hover:btn-primary btn-sm px-4">
+                                {jenis}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </div>
-                  </div>
-                  <div className="mt-6">
-                    <h3 className="font-medium mb-2">Storage</h3>
-                    <div className="flex items-center space-x-2">
-                      {["256GB", "512GB", "1TB"].map((size) => (
-                        <button
-                          key={size}
-                          className="btn btn-outline btn-sm px-4"
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  )}
                   <div className="mt-6 flex items-center space-x-4">
                     <button className="btn btn-primary flex items-center space-x-2">
                       <svg

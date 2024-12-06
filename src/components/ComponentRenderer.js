@@ -21,6 +21,7 @@ import InputFileComponent from '@/components/availableComponents/InputFileCompon
 import CheckboxComponent from '@/components/availableComponents/CheckboxComponent';
 import TextInputComponent from '@/components/availableComponents/TextInputComponent';
 import TextareaComponent from './availableComponents/TextareaComponent';
+import CarouselComponent from '@/components/availableComponents/CarouselComponent';
 
 const ComponentRenderer = ({ component }) => {
   switch (component.component) {
@@ -33,7 +34,7 @@ const ComponentRenderer = ({ component }) => {
     case 'row':
       return <RowComponent data={component.data} columns={component.columns} remove={component.hidden} />;
     case 'section':
-      return <SectionComponent data={component.data} remove={component.hidden} >{component.children}</SectionComponent>;
+      return <SectionComponent data={component.data} remove={component.hidden}>{component.children}</SectionComponent>;
     case 'spacer':
       return <SpacerComponent size={component.data.size} remove={component.hidden} />;
     case 'image':
@@ -59,7 +60,7 @@ const ComponentRenderer = ({ component }) => {
     case 'card':
       return <CardComponent data={component.data} remove={component.hidden} />;
     case 'form':
-      return <FormComponent data={component.data} children={component.children} remove={component.hidden} />;
+      return <FormComponent data={component.data} remove={component.hidden}>{component.children}</FormComponent>;
     case 'select':
       return <SelectComponent data={component.data} remove={component.hidden} />;
     case 'fileInput':
@@ -70,6 +71,8 @@ const ComponentRenderer = ({ component }) => {
       return <TextInputComponent data={component.data} remove={component.hidden} />;
     case 'textarea':
       return <TextareaComponent data={component.data} remove={component.hidden} />;
+    case 'carousel':
+      return <CarouselComponent data={component.data} remove={component.hidden} />;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }

@@ -50,7 +50,7 @@ const Navbar = async ({ theme, remove, search }) => {
     };
 
     return (
-      <div className='w-full fixed z-10 shadow-md bg-base-100'>
+      <div className='w-full fixed z-20 shadow-md bg-base-100'>
         <div className="navbar mx-auto max-w-full lg:max-w-7xl">
           <div className="min-w-full mx-auto flex items-center justify-between">
             <div className="navbar-start flex items-center w-full">

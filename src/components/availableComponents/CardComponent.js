@@ -18,7 +18,7 @@ const CardComponent = ({ data, remove }) => {
     };
 
     return (
-        <div className="card card-compact bg-base-100 w-full shadow-xl">
+        <div className="card card-compact bg-base-100 w-full h-full shadow-xl">
             <figure className="h-72 overflow-hidden object-cover object-center">
                 <Image
                     className="w-full h-full object-cover object-center"
@@ -28,10 +28,10 @@ const CardComponent = ({ data, remove }) => {
                     height={data.image.height}
                 />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title">{data.title}</h2>
-                <p>{data.subTitle}</p>
-                <div className={`card-actions ${getPositionClass(data.button.positionButton)}`}>
+            <div className="p-5 prose md:prose-base flex flex-col h-56">
+                <h4>{data.title}</h4>
+                <p className="font-medium">{data.subTitle}</p>
+                <div className={`card-actions h-full items-end ${getPositionClass(data.button.positionButton)}`}>
                     <Link href={data.button.link} className="btn btn-primary">{data.button.caption}</Link>
                 </div>
             </div>
