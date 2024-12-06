@@ -102,7 +102,7 @@ const ProductsPage = ({ collection }) => {
                       {collection.data.item.varian.map((varian) => (
                         <div key={varian.nameVarian} className="mb-4">
                           <h3 className="font-medium mb-2">{varian.nameVarian}</h3>
-                          <div className="flex items-center space-x-2">
+                          <div className="flex items-center gap-2 flex-wrap-reverse">
                             {varian.jenisVarian.map((jenis) => (
                               <button key={jenis} className="btn btn-outline hover:btn-primary btn-sm px-4">
                                 {jenis}
