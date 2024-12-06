@@ -26,7 +26,6 @@ const CardComponent = ({ data, remove }) => {
                     alt={data.image.altText}
                     width={data.image.width}
                     height={data.image.height}
-                    placeholder="blur"
                 />
             </figure>
             <div className="p-5 prose md:prose-base flex flex-col h-56">
