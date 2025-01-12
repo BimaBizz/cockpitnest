@@ -11,17 +11,6 @@ import HeadingComponent from '@/components/availableComponents/HeadingComponent'
 import MarkdownComponent from '@/components/availableComponents/MarkdownComponent';
 import RichtextComponent from '@/components/availableComponents/RichtextComponent';
 import ButtonComponent from '@/components/availableComponents/ButtonComponent';
-import HeroComponent from '@/components/availableComponents/HeroComponent';
-import Navbar from '@/components/availableComponents/NavbarComponent';
-import FooterComponent from '@/components/availableComponents/FooterComponent';
-import CardComponent from '@/components/availableComponents/CardComponent';
-import FormComponent from '@/components/availableComponents/FormComponent';
-import SelectComponent from '@/components/availableComponents/SelectComponent';
-import InputFileComponent from '@/components/availableComponents/InputFileComponent';
-import CheckboxComponent from '@/components/availableComponents/CheckboxComponent';
-import TextInputComponent from '@/components/availableComponents/TextInputComponent';
-import TextareaComponent from './availableComponents/TextareaComponent';
-import CarouselComponent from '@/components/availableComponents/CarouselComponent';
 
 const ComponentRenderer = ({ component }) => {
   switch (component.component) {
@@ -32,9 +21,9 @@ const ComponentRenderer = ({ component }) => {
     case 'grid':
       return <GridComponent columns={component.columns} data={component.data} remove={component.hidden} />;
     case 'row':
-      return <RowComponent data={component.data} columns={component.columns} remove={component.hidden} />;
+      return <RowComponent meta={component.meta} data={component.data} columns={component.columns} remove={component.hidden} />;
     case 'section':
-      return <SectionComponent data={component.data} remove={component.hidden}>{component.children}</SectionComponent>;
+      return <SectionComponent meta={component.meta} remove={component.hidden}>{component.children}</SectionComponent>;
     case 'spacer':
       return <SpacerComponent size={component.data.size} remove={component.hidden} />;
     case 'image':
@@ -51,28 +40,6 @@ const ComponentRenderer = ({ component }) => {
       return <RichtextComponent html={component.data.html} remove={component.hidden} />;
     case 'button':
       return <ButtonComponent data={component} />;
-    case 'hero' :
-      return <HeroComponent data={component.data} remove={component.hidden} />
-    case 'navbar':
-      return <Navbar theme={component.data.enableTheme} search={component.data.enableSearch} remove={component.hidden}/>
-    case 'footer':
-      return <FooterComponent data={component.data} remove={component.hidden} />
-    case 'card':
-      return <CardComponent data={component.data} remove={component.hidden} />;
-    case 'form':
-      return <FormComponent data={component.data} remove={component.hidden}>{component.children}</FormComponent>;
-    case 'select':
-      return <SelectComponent data={component.data} remove={component.hidden} />;
-    case 'fileInput':
-      return <InputFileComponent data={component.data} remove={component.hidden} />;
-    case 'checkbox':
-      return <CheckboxComponent data={component.data} remove={component.hidden} />;
-    case 'input':
-      return <TextInputComponent data={component.data} remove={component.hidden} />;
-    case 'textarea':
-      return <TextareaComponent data={component.data} remove={component.hidden} />;
-    case 'carousel':
-      return <CarouselComponent data={component.data} remove={component.hidden} />;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }

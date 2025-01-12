@@ -6,7 +6,7 @@ const nextConfig = {
             protocol: 'http',
             hostname: 'localhost',
             port: '',
-            pathname: '/cockpit-pro/storage/**',
+            pathname: '/cockpit-new/storage/**',
           },
         ],
       },
