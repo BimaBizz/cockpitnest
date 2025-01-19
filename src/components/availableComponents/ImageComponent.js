@@ -7,8 +7,8 @@ const ImageComponent = ({ data, remove }) => {
   const src = process.env.NEXT_ASSETS_URL ? process.env.NEXT_ASSETS_URL + path : path;
 
   return (
-    <div className="rounded-lg overflow-hidden h-full w-full shadow-xl">
-      <figure className='w-full h-full'>
+    <div className="rounded-lg overflow-hidden image-full w-full shadow-xl">
+      <figure className='w-full h-full object-cover object-center'>
         <Image
         className='w-full h-full object-cover object-center'
           src={src}

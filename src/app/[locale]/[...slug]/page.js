@@ -5,9 +5,8 @@ import { notFound } from 'next/navigation';
 export async function generateMetadata({ params }) {
   const slug = (await params).slug;
   const fullSlug = `/${slug.join("/")}`;
-
   try {
-    const layout = await fetchLayout(fullSlug);
+    const layout = await fetchLayout(fullSlug, );
     
     let seo = {
       title: "404 Not Found",
@@ -74,17 +73,18 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   const slug = (await params).slug;
+  const locale = (await params).locale;
   const fullSlug = `/${slug.join("/")}`;
 
   try {
-    const layout = await fetchLayout(fullSlug)
+    const layout = await fetchLayout(fullSlug, locale);
 
     if (layout.type === "layout") {
-      return <DynamicComponent layout={layout} />;
+      return <DynamicComponent layout={layout} lang={locale}/>;
     } else if (layout.type === "collection") {
-      return <DynamicComponent collection={layout} />;
+      return <DynamicComponent collection={layout} lang={locale}/>;
     } else if (layout.type === "singleton") {
-      return <DynamicComponent singleton={layout} />;
+      return <DynamicComponent singleton={layout} lang={locale}/>;
     } else {
       notFound();
     }

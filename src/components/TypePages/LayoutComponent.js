@@ -1,7 +1,7 @@
 import ComponentRenderer from "@/components/ComponentRenderer";
 import { notFound } from "next/navigation";
 
-const LayoutComponent = ({ layout }) => {
+const LayoutComponent = ({ layout, lang }) => {
   if (!layout.data || !layout.data.layout) {
     notFound(); // Redirect to 404 page
   }
@@ -9,7 +9,7 @@ const LayoutComponent = ({ layout }) => {
   return (
     <div>
       {layout.data.layout.map((section) => (
-        <ComponentRenderer key={section.id} component={section} />
+        <ComponentRenderer key={section.id} component={section} lang={lang}/>
       ))}
     </div>
   );
