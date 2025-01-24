@@ -4,14 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { fetchSearch } from '@/lib/hook';
 import Link from 'next/link';
 
-const SearchButton = () => {
+const SearchButton = ({lang}) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     const fetchResults = async () => {
       if (query.length > 2) {
-        const data = await fetchSearch('products', query);
+        const data = await fetchSearch('plants', query);
         setResults(data.hits);
       } else {
         setResults([]);
@@ -80,11 +80,11 @@ const SearchButton = () => {
                 />
                 <ul className={`${results.length > 2 ? 'max-h-96 overflow-y-scroll' : ''}`}>
                     {results.map((result) => (
-                        <li key={result.id} className="py-4 space-y-2">
-                            <Link href={"/products/"+result.slug} className="font-bold text-lg">
+                        <li key={result.id} className="p-4 hover:bg-base-200 rounded-lg">
+                            <Link href={`/${lang}/plants/${result.slug}`} className="font-bold text-lg space-y-2">
                                 <span dangerouslySetInnerHTML={{ __html: highlightText(result.title, query) }} />
+                                <div className='prose' dangerouslySetInnerHTML={{ __html: highlightText(result.desc.substring(0, 200), query) }} />
                             </Link>
-                            <div className='prose' dangerouslySetInnerHTML={{ __html: highlightText(result.description.substring(0, 200), query) }} />
                         </li>
                     ))}
                 </ul>

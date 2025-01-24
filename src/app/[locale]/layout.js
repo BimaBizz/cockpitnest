@@ -25,8 +25,9 @@ const defaultSeoSettings = {
   },
 };
 
-export async function generateMetadata() {
-  const settings = await fetchSettings();
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const settings = await fetchSettings(locale);
   const seoSettings = settings.seo || defaultSeoSettings;
 
   const otherMeta = settings.meta || {};
@@ -73,7 +74,7 @@ export default async function RootLayout({ children, params }) {
   }
 
   return (
-    <html lang={locale} data-theme={theme}>
+    <html lang={locale} data-theme="store">
       <body className={`${poppins.className}`}>
         {children}
       </body>

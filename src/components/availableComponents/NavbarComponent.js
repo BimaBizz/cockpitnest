@@ -11,7 +11,9 @@ const Navbar = async ({ theme, remove, search, lang }) => {
   try {
     const data = await fetchMenus(process.env.NEXT_MENU_NAME, lang);
     const navData = data.links || [];
-    const settings = await fetchSettings();
+
+
+    const settings = await fetchSettings(lang);
 
     const renderLinks = (links, isDropdown = false) => {
       return links.map((link, index) => (
@@ -87,7 +89,7 @@ const Navbar = async ({ theme, remove, search, lang }) => {
                 {theme && <ThemeButton />}
               </div>
               <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
-                {search && <SearchButton />}
+                {search && <SearchButton lang={lang}/>}
               </div>
             </div>
           </div>

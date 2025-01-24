@@ -1,12 +1,15 @@
 import DynamicComponent from "@/components/DynamicComponent";
 import { fetchLayout } from "@/lib/hook";
 import { notFound } from 'next/navigation';
+import { cookies } from "next/headers";
 
 export async function generateMetadata({ params }) {
   const slug = (await params).slug;
   const fullSlug = `/${slug.join("/")}`;
+  const locale = await cookies()
+
   try {
-    const layout = await fetchLayout(fullSlug, );
+    const layout = await fetchLayout(fullSlug, locale.get('NEXT_LOCALE').value);
     
     let seo = {
       title: "404 Not Found",
@@ -79,12 +82,14 @@ export default async function Page({ params }) {
   try {
     const layout = await fetchLayout(fullSlug, locale);
 
+    const route = layout._locale === 'default' ? 'id' : locale;
+
     if (layout.type === "layout") {
-      return <DynamicComponent layout={layout} lang={locale}/>;
+      return <DynamicComponent layout={layout} lang={route}/>;
     } else if (layout.type === "collection") {
-      return <DynamicComponent collection={layout} lang={locale}/>;
+      return <DynamicComponent collection={layout} lang={route}/>;
     } else if (layout.type === "singleton") {
-      return <DynamicComponent singleton={layout} lang={locale}/>;
+      return <DynamicComponent singleton={layout} lang={route}/>;
     } else {
       notFound();
     }

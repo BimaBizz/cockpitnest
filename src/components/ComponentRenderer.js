@@ -23,19 +23,22 @@ import TextInputComponent from '@/components/availableComponents/TextInputCompon
 import TextareaComponent from './availableComponents/TextareaComponent';
 import CarouselComponent from '@/components/availableComponents/CarouselComponent';
 import FeaturesComponent from '@/components/availableComponents/FeaturesComponent';
+import ItemsPagesComponent from '@/components/availableComponents/ItemsPagesComponent';
 
 const ComponentRenderer = ({ component, lang }) => {
+
+
   switch (component.component) {
     case 'divider':
       return <DividerComponent remove={component.hidden} />;
     case 'link':
       return <LinkComponent data={component.data} remove={component.hidden} />;
     case 'grid':
-      return <GridComponent columns={component.columns} data={component.data} remove={component.hidden} />;
+      return <GridComponent columns={component.columns} data={component.data} remove={component.hidden} meta={component.meta}/>;
     case 'row':
       return <RowComponent data={component.data} columns={component.columns} remove={component.hidden} />;
     case 'section':
-      return <SectionComponent data={component.data} remove={component.hidden} meta={component.meta}>{component.children}</SectionComponent>;
+      return <SectionComponent data={component.data} remove={component.hidden} meta={component.meta} lang={lang}>{component.children}</SectionComponent>;
     case 'spacer':
       return <SpacerComponent size={component.data.size} remove={component.hidden} />;
     case 'image':
@@ -57,7 +60,7 @@ const ComponentRenderer = ({ component, lang }) => {
     case 'navbar':
       return <Navbar theme={component.data.enableTheme} search={component.data.enableSearch} remove={component.hidden} lang={lang}/>
     case 'footer':
-      return <FooterComponent data={component.data} remove={component.hidden} />
+      return <FooterComponent data={component.data} remove={component.hidden} lang={lang}/>
     case 'card':
       return <CardComponent data={component.data} remove={component.hidden} />;
     case 'form':
@@ -76,6 +79,8 @@ const ComponentRenderer = ({ component, lang }) => {
       return <CarouselComponent data={component.data} remove={component.hidden} />;
     case 'feature':
       return <FeaturesComponent data={component.data} remove={component.hidden} />;
+    case 'itemsPages' :
+      return <ItemsPagesComponent data={component.data.items} remove={component.hidden} lang={lang}/>;
     default:
       return <div>Unknown component type: {component.component}</div>;
   }
