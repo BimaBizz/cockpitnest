@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { fetchMenus, fetchSettings } from '@/lib/hook';
 import ThemeButton from '@/components/SupportComponents/ThemeButton';
 import SearchButton from '@/components/SupportComponents/SearchButton';
+import LanguageButton from '@/components/SupportComponents/LanguageButton';
 
 const Navbar = async ({ theme, remove, search, lang }) => {
   if (remove) {
@@ -90,6 +91,9 @@ const Navbar = async ({ theme, remove, search, lang }) => {
               </div>
               <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
                 {search && <SearchButton lang={lang}/>}
+              </div>
+              <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
+                {search && <LanguageButton />}
               </div>
             </div>
           </div>
