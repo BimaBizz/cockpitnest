@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./../globals.css";
 import { Poppins } from 'next/font/google';
 import { fetchSettings } from '@/lib/hook';
 import { cookies } from 'next/headers'; // Import cookies
