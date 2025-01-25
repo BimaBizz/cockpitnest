@@ -7,6 +7,7 @@ import Link from 'next/link';
 const SearchButton = ({lang}) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [tujuan, setTujuan] = useState('');
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -15,6 +16,12 @@ const SearchButton = ({lang}) => {
         setResults(data.hits);
       } else {
         setResults([]);
+      }
+
+      if (lang === 'en') {
+        setTujuan('plants');
+      } else {
+        setTujuan('tanaman');
       }
     };
 
@@ -81,7 +88,7 @@ const SearchButton = ({lang}) => {
                 <ul className={`${results.length > 2 ? 'max-h-96 overflow-y-scroll' : ''}`}>
                     {results.map((result) => (
                         <li key={result.id} className="p-4 hover:bg-base-200 rounded-lg">
-                            <Link href={`/${lang}/plants/${result.slug}`} className="font-bold text-lg space-y-2">
+                            <Link href={`/${lang}/${tujuan}/${result.slug}`} className="font-bold text-lg space-y-2">
                                 <span dangerouslySetInnerHTML={{ __html: highlightText(result.title, query) }} />
                                 <div className='prose' dangerouslySetInnerHTML={{ __html: highlightText(result.desc.substring(0, 200), query) }} />
                             </Link>
