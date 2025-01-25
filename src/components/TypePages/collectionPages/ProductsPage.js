@@ -48,7 +48,7 @@ const ProductsPage = ({ collection, lang }) => {
                       height={item.item.image.height}
                     />
                   </figure>
-                  <div className="p-5 prose md:prose-base flex flex-col justify-between h-40">
+                  <div className="p-5 prose md:prose-base flex flex-col justify-between h-32">
                     <h4>{item.item.title}</h4>
                     <p className="text-end font-medium">
                       {discount.enableDiscount && (
@@ -77,7 +77,7 @@ const ProductsPage = ({ collection, lang }) => {
             <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
               <div className="grid lg:grid-cols-2 gap-8 xl:gap-16">
                 <Image
-                  className="rounded-xl shadow-lg object-cover object-center"
+                  className="rounded-xl shadow-lg object-cover object-center w-full h-[300px] lg:h-[400px]"
                   src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${collection.data.item.image.path}`}
                   alt={collection.data.item.image.altText}
                   width={collection.data.item.image.width}
@@ -97,28 +97,6 @@ const ProductsPage = ({ collection, lang }) => {
                         Rp. {formatPrice(collection.data.item.discount.enableDiscount ? collection.data.item.price * (1 - collection.data.item.discount.percent / 100) : collection.data.item.price)}
                       </span>
                     </p>
-                    <div className="flex items-center gap-2">
-                      <div className="flex">
-                        {[...Array(5)].map((_, index) => (
-                          <svg
-                            key={index}
-                            className="w-5 h-5 text-yellow-400"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 4.21l1.45 2.94 3.25.47-2.35 2.3.56 3.24-2.91-1.53-2.91 1.53.56-3.24-2.35-2.3 3.25-.47L12 4.21z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="text-sm font-medium">(5.0)</p>
-                      <a
-                        href="#"
-                        className="text-sm text-primary underline hover:no-underline"
-                      >
-                        345 Reviews
-                      </a>
-                    </div>
                   </div>
                   {collection.data.item.varian && collection.data.item.varian.length > 0 && (
                     <div className="mt-6">
