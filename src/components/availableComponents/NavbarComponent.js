@@ -3,8 +3,9 @@ import { fetchMenus, fetchSettings } from '@/lib/hook';
 import ThemeButton from '@/components/SupportComponents/ThemeButton';
 import SearchButton from '@/components/SupportComponents/SearchButton';
 import LanguageButton from '@/components/SupportComponents/LanguageButton';
+import AccountButton from '@/components/SupportComponents/AccountButton';
 
-const Navbar = async ({ theme, remove, search, lang }) => {
+const Navbar = async ({ theme, remove, search, lang, language, account }) => {
   if (remove) {
     return null;
   }
@@ -19,7 +20,7 @@ const Navbar = async ({ theme, remove, search, lang }) => {
     const renderLinks = (links, isDropdown = false) => {
       return links.map((link, index) => (
         link.active && (
-          <li key={index} tabIndex={0} className={isDropdown ? '' : 'dropdown dropdown-hover'}>
+          <li key={index} tabIndex={0} className={isDropdown ? '' : 'dropdown'}>
             {link.children && link.children.length > 0 ? (
               <>
                 <label tabIndex={0} className="flex items-start md:items-center md:btn-ghost my-auto md:h-full font-semibold">
@@ -34,7 +35,7 @@ const Navbar = async ({ theme, remove, search, lang }) => {
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </label>
-                <ul className="lg:dropdown-content menu p-2 shadow-none lg:shadow bg-base-100 lg:rounded-box w-52">
+                <ul className="lg:dropdown-content menu p-2 shadow-none lg:shadow bg-base-100 lg:rounded-box w-52 mt-0 lg:mt-5">
                   {link.children.map((child, childIndex) => (
                     <li key={childIndex}>
                       <Link href={child.url.route || child.url} className='font-semibold'>{child.title}</Link>
@@ -92,8 +93,11 @@ const Navbar = async ({ theme, remove, search, lang }) => {
               <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
                 {search && <SearchButton lang={lang}/>}
               </div>
-              <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
-                {search && <LanguageButton />}
+              <div className={`h-full my-auto ${account ? '' : 'hidden'}`}>
+                {account && <AccountButton lang={lang}/>}
+              </div>
+              <div className={`h-full my-auto ${language ? '' : 'hidden'}`}>
+                {language && <LanguageButton />}
               </div>
             </div>
           </div>

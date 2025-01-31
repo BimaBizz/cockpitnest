@@ -16,7 +16,7 @@ const ThemeButton = () => {
   };
 
   return (
-    <div className="dropdown dropdown-hover my-auto">
+    <div className="dropdown my-auto">
 
       <label tabIndex="0" className="btn btn-ghost m-1">
         Theme <svg className="fill-current ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
@@ -24,7 +24,7 @@ const ThemeButton = () => {
 
       <ul
         tabIndex="0"
-        className="dropdown-content menu bg-base-100 rounded-box shadow-lg w-52 p-2"
+        className="dropdown-content menu bg-base-100 rounded-box shadow-lg w-52 p-2 mt-3"
       >
         {['light', 'dark', 'system'].map((themeOption) => (
           <li key={themeOption}>

@@ -11,7 +11,7 @@ const LanguageButton = () => {
       
       <ul
         tabIndex="0"
-        className="dropdown-content menu bg-base-100 rounded-box shadow-lg w-52 p-2"
+        className="dropdown-content menu bg-base-100 rounded-box shadow-lg w-52 p-2 mt-3"
       >
         <li>
             <Link href="/en" className="hover:bg-base-100 cursor-pointer px-4 py-2">
