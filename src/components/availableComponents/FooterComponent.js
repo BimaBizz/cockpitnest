@@ -8,7 +8,7 @@ const FooterComponent = ({ data, lang }) => {
 
   return (
     <footer className="footer bg-base-100 text-base-content p-10">
-      <div className="w-full max-w-7xl mx-auto grid-flow-col">
+      <div className="w-full max-w-7xl mx-auto grid md:grid-flow-col">
         <aside>
           <Image src={process.env.NEXT_ASSETS_URL+data.logo.path} alt={data.logo.title} width={data.logo.width} height={data.logo.height} className='h-20 w-20'/>
           <div className='prose-base prose-h3:font-semibold mt-5'>

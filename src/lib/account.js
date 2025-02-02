@@ -15,3 +15,16 @@ export const fetchRegister = async (user, name, email, password) => {
     const data = await response.json();
     return data;
 };
+
+export const updateUserMeta = async (id, meta) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user/${id}/optional`, {
+        method: 'PATCH',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "meta": meta }) // updated body
+    });
+    const data = await response.json();
+    return data;
+};

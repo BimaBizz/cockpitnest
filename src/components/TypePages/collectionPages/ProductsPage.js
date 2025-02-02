@@ -2,6 +2,7 @@ import ComponentRenderer from "@/components/ComponentRenderer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import AddToCartButton from "@/components/SupportComponents/AddToCartButton";
 
 const ProductsPage = ({ collection, lang }) => {
   if (!collection.data || (!collection.data.items && !collection.data.item)) {
@@ -84,85 +85,58 @@ const ProductsPage = ({ collection, lang }) => {
                   height={collection.data.item.image.height}
                 />
                 {/* Bagian Detail */}
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-bold">
-                    {collection.data.item.title}
-                  </h1>
-                  <div className="flex items-center mt-4 space-x-4">
-                    <p className="text-xl md:text-2xl font-medium">
-                      {collection.data.item.discount.enableDiscount && (
-                        <span className="line-through text-error mr-2">Rp. {formatPrice(collection.data.item.price)}</span>
-                      )}
-                      <span>
-                        Rp. {formatPrice(collection.data.item.discount.enableDiscount ? collection.data.item.price * (1 - collection.data.item.discount.percent / 100) : collection.data.item.price)}
-                      </span>
-                    </p>
-                  </div>
-                  {collection.data.item.varian && collection.data.item.varian.length > 0 && (
-                    <div className="mt-6">
-                      {collection.data.item.varian.map((varian) => (
-                        <div key={varian.nameVarian} className="mb-4">
-                          <h3 className="font-medium mb-2">{varian.nameVarian}</h3>
-                          <div className="flex items-center gap-2 flex-wrap-reverse">
-                            {varian.jenisVarian.map((jenis) => (
-                              <button key={jenis} className="btn btn-outline hover:btn-primary btn-sm px-4">
+                        <div>
+                          <h1 className="text-2xl md:text-3xl font-bold">
+                          {collection.data.item.title}
+                          </h1>
+                          <div className="flex items-center mt-4 space-x-4">
+                          <p className="text-xl md:text-2xl font-medium">
+                            {collection.data.item.discount.enableDiscount && (
+                            <span className="line-through text-error mr-2">Rp. {formatPrice(collection.data.item.price)}</span>
+                            )}
+                            <span>
+                            Rp. {formatPrice(collection.data.item.discount.enableDiscount ? collection.data.item.price * (1 - collection.data.item.discount.percent / 100) : collection.data.item.price)}
+                            </span>
+                          </p>
+                          </div>
+                          {collection.data.item.varian && collection.data.item.varian.length > 0 && (
+                          <div className="mt-6">
+                            {collection.data.item.varian.map((varian) => (
+                            <div key={varian.nameVarian} className="mb-4">
+                              <h3 className="font-medium mb-2">{varian.nameVarian}</h3>
+                              <div className="flex items-center gap-2 flex-wrap-reverse">
+                              {varian.jenisVarian.map((jenis) => (
+                                <button key={jenis} className="btn btn-outline hover:btn-primary btn-sm px-4">
                                 {jenis}
-                              </button>
+                                </button>
+                              ))}
+                              </div>
+                            </div>
                             ))}
                           </div>
+                          )}
+                          <div className="mt-6 flex items-center space-x-4">
+                          <button className="btn btn-primary flex items-center space-x-2">
+                          <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                          </svg>
+                            <span>{lang === 'id' ? 'Beli Sekarang' : 'Buy Now'}</span>
+                          </button>
+                          <AddToCartButton lang={lang} item={collection.data.item}/>
+                          </div>
+                          <div className="divider" />
+                          <div
+                          id="post"
+                          className="prose"
+                          dangerouslySetInnerHTML={{
+                            __html: collection.data.item.desc
+                          }}
+                          />
                         </div>
-                      ))}
-                    </div>
-                  )}
-                  <div className="mt-6 flex items-center space-x-4">
-                    <button className="btn btn-primary flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
-                        />
-                      </svg>
-                      <span>Add to favorites</span>
-                    </button>
-                    <button className="btn btn-primary flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"
-                        />
-                      </svg>
-                      <span>Add to cart</span>
-                    </button>
-                  </div>
-                  <div className="divider" />
-                  <div
-                    id="post"
-                    className="prose"
-                    dangerouslySetInnerHTML={{
-                      __html: collection.data.item.desc
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* Layout setelah */}
+                        </div>
+                      </div>
+                      </section>
+                      {/* Layout setelah */}
           {collection.data.layoutDetail.after.map((section) => (
             <ComponentRenderer key={section.id} component={section} lang={lang}/>
           ))}
