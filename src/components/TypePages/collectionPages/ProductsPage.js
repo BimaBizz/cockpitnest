@@ -2,7 +2,6 @@ import ComponentRenderer from "@/components/ComponentRenderer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import AddToCartButton from "@/components/SupportComponents/AddToCartButton";
 
 const ProductsPage = ({ collection, lang }) => {
   if (!collection.data || (!collection.data.items && !collection.data.item)) {
@@ -122,7 +121,6 @@ const ProductsPage = ({ collection, lang }) => {
                           </svg>
                             <span>{lang === 'id' ? 'Beli Sekarang' : 'Buy Now'}</span>
                           </button>
-                          <AddToCartButton lang={lang} item={collection.data.item}/>
                           </div>
                           <div className="divider" />
                           <div

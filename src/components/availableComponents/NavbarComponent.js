@@ -4,7 +4,6 @@ import ThemeButton from '@/components/SupportComponents/ThemeButton';
 import SearchButton from '@/components/SupportComponents/SearchButton';
 import LanguageButton from '@/components/SupportComponents/LanguageButton';
 import AccountButton from '@/components/SupportComponents/AccountButton';
-import DrawerCart from '@/components/SupportComponents/DrawerCart';
 
 const Navbar = async ({ theme, remove, search, lang, language, account }) => {
   if (remove) {
@@ -96,9 +95,6 @@ const Navbar = async ({ theme, remove, search, lang, language, account }) => {
               </div>
               <div className={`h-full my-auto ${account ? '' : 'hidden'}`}>
                 {account && <AccountButton lang={lang}/>}
-              </div>
-              <div className="h-full my-auto">
-                <DrawerCart />
               </div>
               <div className={`h-full my-auto ${language ? '' : 'hidden'}`}>
                 {language && <LanguageButton />}

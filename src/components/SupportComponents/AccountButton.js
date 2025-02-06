@@ -8,6 +8,7 @@ import Link from 'next/link';
 const AccountButton = ({lang}) => {
   const [hasSession, setHasSession] = useState(false);
   const [user, setUser] = useState('');
+  const [id, setId] = useState('');
 
   useEffect(() => {
     const session = Cookies.get('session');
@@ -15,6 +16,7 @@ const AccountButton = ({lang}) => {
       setHasSession(true);
       const decoded = decodeJwt(session);
       setUser(decoded.user);
+      setId(decoded._id);
     }
   }, []);
 
@@ -36,11 +38,11 @@ const AccountButton = ({lang}) => {
         {hasSession ? (
           <>
             <li>
-              <div className="justify-between">
+              <div className="justify-between capitalize">
                 {user}
               </div>
             </li>
-            <li><div>Settings</div></li>
+            <li><Link href={`/${lang}/dashboard/${id}`}>Dashboard</Link></li>
             <li><button onClick={handleLogout}>Logout</button></li>
           </>
         ) : (

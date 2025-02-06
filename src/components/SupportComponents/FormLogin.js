@@ -25,6 +25,7 @@ const FormLogin = (props) => {
               type='email' 
               className='input input-bordered w-full' 
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
         </div>
@@ -36,6 +37,7 @@ const FormLogin = (props) => {
               type='password' 
               className='input input-bordered w-full' 
               value={password}
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
         </div>

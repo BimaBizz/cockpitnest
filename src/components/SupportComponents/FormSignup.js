@@ -25,6 +25,7 @@ const FormSignup = (props) => {
           type="text" 
           className="input input-bordered w-full" 
           value={user}
+          required
           onChange={(e) => setUser(e.target.value)}
         />
       </div>
@@ -36,6 +37,7 @@ const FormSignup = (props) => {
           type="text" 
           className="input input-bordered w-full" 
           value={name}
+          required
           onChange={(e) => setName(e.target.value)}
         />
       </div>
@@ -47,6 +49,7 @@ const FormSignup = (props) => {
           type="email" 
           className="input input-bordered w-full" 
           value={email}
+          required
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -58,6 +61,7 @@ const FormSignup = (props) => {
           type="password" 
           className="input input-bordered w-full" 
           value={password}
+          required
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>

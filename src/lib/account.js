@@ -28,3 +28,12 @@ export const updateUserMeta = async (id, meta) => {
     const data = await response.json();
     return data;
 };
+
+export const fetchUserById = async (id) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user/${id}`, {
+        method: 'GET',
+        cache: 'no-cache',
+    });
+    const data = await response.json();
+    return data;
+};
