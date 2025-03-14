@@ -14,7 +14,6 @@ const Navbar = async ({ theme, remove, search, lang, language, account }) => {
     const data = await fetchMenus(process.env.NEXT_MENU_NAME, lang);
     const navData = data.links || [];
 
-
     const settings = await fetchSettings(lang);
 
     const renderLinks = (links, isDropdown = false) => {
@@ -35,7 +34,7 @@ const Navbar = async ({ theme, remove, search, lang, language, account }) => {
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </label>
-                <ul className="lg:dropdown-content menu p-2 shadow-none lg:shadow bg-base-100 lg:rounded-box w-52 mt-0 lg:mt-5">
+                <ul className="menu menu-sm dropdown-right dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                   {link.children.map((child, childIndex) => (
                     <li key={childIndex}>
                       <Link href={child.url.route || child.url} className='font-semibold'>{child.title}</Link>
@@ -54,54 +53,43 @@ const Navbar = async ({ theme, remove, search, lang, language, account }) => {
     };
 
     return (
-      <div className='w-full fixed z-20 shadow-md bg-base-100'>
-        <div className="navbar mx-auto max-w-full lg:max-w-7xl">
-          <div className="min-w-full mx-auto flex items-center justify-between">
-            <div className="navbar-start flex items-center w-full">
-              <div className="dropdown lg:hidden">
-              <label tabIndex={0} className="btn btn-ghost">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-                </svg>
-              </label>
-              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 p-2 shadow">
-                {renderLinks(navData, true)}
-              </ul>
-              </div>
-              <Link href="/" className="normal-case text-xl font-bold">
-              {settings.seo.title}
-              </Link>
+      <div className='fixed z-50 bg-base-100 w-full shadow-sm'>
+      <div className="navbar max-w-7xl mx-auto">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
             </div>
-            <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">{renderLinks(navData)}</ul>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-4 w-52 p-2 shadow">
+              {renderLinks(navData, false)}
+            </ul>
+          </div>
+          <Link href="/" className="my-auto font-semibold text-xl">
+            {settings.seo.title}
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{renderLinks(navData)}</ul>
+        </div>
+        <div className="navbar-end">
+          <div className={`flex justify-end w-full ${!theme && !search ? 'hidden' : ''}`}>
+            <div className={`h-full ${theme ? '' : 'hidden'}`}>
+              {theme && <ThemeButton />}
             </div>
-            <div className={`flex justify-end w-full ${!theme && !search ? 'hidden' : ''}`}>
-              <div className={`h-full ${theme ? '' : 'hidden'}`}>
-                {theme && <ThemeButton />}
-              </div>
-              <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
-                {search && <SearchButton lang={lang}/>}
-              </div>
-              <div className={`h-full my-auto ${account ? '' : 'hidden'}`}>
-                {account && <AccountButton lang={lang}/>}
-              </div>
-              <div className={`h-full my-auto ${language ? '' : 'hidden'}`}>
-                {language && <LanguageButton />}
-              </div>
+            <div className={`h-full my-auto ${search ? '' : 'hidden'}`}>
+              {search && <SearchButton lang={lang} />}
+            </div>
+            <div className={`h-full my-auto ${account ? '' : 'hidden'}`}>
+              {account && <AccountButton lang={lang} />}
+            </div>
+            <div className={`h-full my-auto ${language ? '' : 'hidden'}`}>
+              {language && <LanguageButton />}
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   } catch (error) {

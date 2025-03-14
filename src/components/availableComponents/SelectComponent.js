@@ -21,22 +21,21 @@ const SelectComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{data.name}</span>
-      </label>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">{data.name}</legend>
       <select 
-        className="select select-bordered" 
+        className="select w-full" 
         value={value}
         onChange={handleChange}
         required
       >
-        <option value="" disabled>Select an option</option>
+        <option value="" disabled>Pick an option</option>
         {data.selectList.listname.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}
       </select>
-    </div>
+      <span className="fieldset-label">Optional</span>
+    </fieldset>
   );
 };
 

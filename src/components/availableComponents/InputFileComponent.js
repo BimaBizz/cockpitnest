@@ -20,18 +20,18 @@ const InputFileComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{data.name}</span>
-      </label>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">
+        {data.name}
+      </legend>
       <input 
         type="file" 
         name={data.name || "file"} 
-        className="file-input file-input-bordered" 
+        className="file-input w-full" 
         onChange={handleChange}
         required
       />
-    </div>
+    </fieldset>
   );
 };
 

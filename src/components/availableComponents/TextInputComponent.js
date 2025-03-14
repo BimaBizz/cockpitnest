@@ -20,20 +20,18 @@ const TextInputComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{data.name}</span>
-      </label>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">{data.name}</legend>
       <input 
         type={data.type || "text"} 
         name={data.name || "input"} 
-        placeholder={data.placeholder || "Enter text here"} 
-        className="input input-bordered w-full" 
+        placeholder={data.placeholder || "Type here"} 
+        className="input w-full" 
         value={value}
         onChange={handleChange}
         required
       />
-    </div>
+    </fieldset>
   );
 };
 

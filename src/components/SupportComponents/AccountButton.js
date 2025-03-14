@@ -34,7 +34,7 @@ const AccountButton = ({lang}) => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-4">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm mt-4">
         {hasSession ? (
           <>
             <li>

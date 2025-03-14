@@ -20,18 +20,18 @@ const CheckboxComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control my-2">
-      <label className="label cursor-pointer">
-        <span className="label-text">{data.name}</span>
+    <fieldset className="fieldset p-4 bg-base-100 border border-base-300 rounded-box w-full">
+      <legend className="fieldset-legend">{data.name}</legend>
+      <label className="fieldset-label">
         <input 
           type="checkbox" 
-          className="checkbox checkbox-primary" 
+          className="checkbox" 
           checked={checked}
           onChange={handleChange}
           required
         />
       </label>
-    </div>
+    </fieldset>
   );
 };
 

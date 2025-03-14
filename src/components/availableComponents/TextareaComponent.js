@@ -20,19 +20,19 @@ const TextareaComponent = ({ data, remove }) => {
   };
 
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{data.name}</span>
-      </label>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">
+        {data.name}
+      </legend>
       <textarea 
         name={data.name || "input"} 
         placeholder={data.placeholder || "Enter text here"} 
-        className="textarea textarea-bordered w-full h-full" 
+        className="textarea w-full h-full" 
         value={value}
         onChange={handleChange}
         required
       />
-    </div>
+    </fieldset>
   );
 };
 

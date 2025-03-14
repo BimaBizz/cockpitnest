@@ -2,6 +2,7 @@ import ComponentRenderer from "@/components/ComponentRenderer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import ButtonBuyItem from "@/components/SupportComponents/ButtonBuyItem";
 
 const ProductsPage = ({ collection, lang }) => {
   if (!collection.data || (!collection.data.items && !collection.data.item)) {
@@ -74,7 +75,7 @@ const ProductsPage = ({ collection, lang }) => {
             <ComponentRenderer key={section.id} component={section} lang={lang}/>
           ))}
           <section className="py-8 bg-base-100 md:py-16 dark:bg-gray-900 antialiased">
-            <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+            <div className="max-w-(--breakpoint-xl) px-4 mx-auto 2xl:px-0">
               <div className="grid lg:grid-cols-2 gap-8 xl:gap-16">
                 <Image
                   className="rounded-xl shadow-lg object-cover object-center w-full h-[300px] lg:h-[400px]"
@@ -98,29 +99,8 @@ const ProductsPage = ({ collection, lang }) => {
                             </span>
                           </p>
                           </div>
-                          {collection.data.item.varian && collection.data.item.varian.length > 0 && (
-                          <div className="mt-6">
-                            {collection.data.item.varian.map((varian) => (
-                            <div key={varian.nameVarian} className="mb-4">
-                              <h3 className="font-medium mb-2">{varian.nameVarian}</h3>
-                              <div className="flex items-center gap-2 flex-wrap-reverse">
-                              {varian.jenisVarian.map((jenis) => (
-                                <button key={jenis} className="btn btn-outline hover:btn-primary btn-sm px-4">
-                                {jenis}
-                                </button>
-                              ))}
-                              </div>
-                            </div>
-                            ))}
-                          </div>
-                          )}
                           <div className="mt-6 flex items-center space-x-4">
-                          <button className="btn btn-primary flex items-center space-x-2">
-                          <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-                          </svg>
-                            <span>{lang === 'id' ? 'Beli Sekarang' : 'Buy Now'}</span>
-                          </button>
+                          <ButtonBuyItem itemId={collection.data.item._id} qt="1" lang={lang}/>
                           </div>
                           <div className="divider" />
                           <div
