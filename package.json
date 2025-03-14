@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "daisyui": "^4.12.14",
     "highlight.js": "^11.10.0",
     "jose": "^5.9.6",
     "js-cookie": "^3.0.5",
@@ -20,10 +19,12 @@
     "showdown": "^2.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.13",
     "@tailwindcss/typography": "^0.5.15",
+    "daisyui": "^5.0.3",
     "eslint": "^8",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^4.0.13"
   }
 }

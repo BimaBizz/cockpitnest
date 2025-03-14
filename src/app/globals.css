@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin 'daisyui';
+
+@plugin "daisyui/theme" {
+  name: "store";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: #fcfcfc;
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: #000000;
+  --color-primary-content: oklch(93% 0.034 272.788);
+  --color-secondary: #007aa8;
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: #b9a300;
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: #272419;
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: #0098ff;
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: #b8e200;
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: #ee9600;
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: #ff7a7b;
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
+
+@config '../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 .carousel-item {
     position: absolute;

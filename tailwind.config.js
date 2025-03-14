@@ -8,25 +8,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require('daisyui'),
-  ],
-  daisyui: {
-    themes: ["light", "dark", {
-      store: {
-        "primary": "#000000",
-        "secondary": "#007aa8",
-        "accent": "#b9a300",
-        "neutral": "#272419",
-        "base-100": "#fcfcfc",
-        "info": "#0098ff",
-        "success": "#b8e200",
-        "warning": "#ee9600",   
-        "error": "#ff7a7b",
-        },
-      },],
-  },
   safelist: [
     "lg:grid-cols-1",
     "lg:grid-cols-2",
