@@ -9,8 +9,7 @@ const page = async ({params}) => {
 
     const locale = (await params).locale;
 
-    const data = await fetchLocalze('login', locale);
-    
+    const data = await fetchLocalze('login', locale);    
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 w-full min-h-screen'>

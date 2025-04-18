@@ -19,7 +19,7 @@ const page = async ({params}) => {
             <div className='w-full max-w-md'>
                 <h1 className='text-2xl mb-4 font-bold'>{data.greatting}</h1>
                 <FormSignup user={data.user} nama={data.nama} button={data.button} lang={locale}/>
-                <p className='mt-4'>{data.akun} <span className='font-medium text-primary'><Link href={`/${locale}/login`}>{data.daftar}</Link></span></p>
+                <p className='mt-4'>{data.akun} <span className='font-medium text-primary'><Link href={`/${locale}/login`}>{data.masuk}</Link></span></p>
             </div>
         </div>  
             <div className='hidden md:block'>

@@ -50,15 +50,16 @@ export const fetchSitemap = async () => {
 export const fetchSearch = async (index, query) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/detektivo/search/${index}?q=${query}`,{
         cache : 'no-cache'
-    }); // ganti dengan URL API kamu
+    }); 
     const data = await response.json();
     return data;
   };
 
 export const fetchLocalze = async (name, lang) => {
+    lang = getLocale(lang);
     const response = await fetch(`${process.env.NEXT_HOST}/api/lokalize/project/${name}?locale=${lang}`,{
         cache : 'no-cache'
-    }); // ganti dengan URL API kamu
+    }); 
     const data = await response.json();
     return data;
   };

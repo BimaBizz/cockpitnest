@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'admin.bizzcode.tech',
+            hostname: 'nest.bizzcode.tech',
             port: '',
             pathname: '/**',
           },
