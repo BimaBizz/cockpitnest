@@ -13,11 +13,9 @@ export default async function Page({ params, children }) {
   const settings = await fetchSettings(locale);
   const data = settings;
 
-  const idUser = (await params).id;
-
   return (
     <SidebarProvider>
-      <AppSidebar data={data} idUser={idUser}/>
+      <AppSidebar data={data} iduser={(await params).id}/>
       <SidebarInset>
         {children}
       </SidebarInset>

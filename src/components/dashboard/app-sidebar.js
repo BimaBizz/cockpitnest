@@ -153,7 +153,7 @@ export function AppSidebar({ ...props }) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} iduser={props.idUser}/>
+        <NavUser user={data.user} iduser={props.iduser}/>
       </SidebarFooter>
     </Sidebar>
   )
