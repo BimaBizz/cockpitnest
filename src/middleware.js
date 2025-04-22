@@ -4,7 +4,7 @@ import { routing } from './i18n/routing';
 
 function checkSessionCookie(req) {
   const sessionCookie = req.cookies.get('session');
-  if (!sessionCookie && req.nextUrl.pathname.startsWith('/dashboard')) {
+  if (!sessionCookie && req.nextUrl.pathname.startsWith('/dashboard/:path*')) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
   return NextResponse.next();
