@@ -12,7 +12,7 @@ const SearchButton = ({lang}) => {
   useEffect(() => {
     const fetchResults = async () => {
       if (query.length > 2) {
-        const data = await fetchSearch('plants', query);
+        const data = await fetchSearch('Plants', query);
         setResults(data.hits);
       } else {
         setResults([]);
